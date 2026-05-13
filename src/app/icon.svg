@@ -1,31 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
-    <radialGradient id="sg" cx="40%" cy="40%" r="50%">
-      <stop offset="0%" stop-color="#fff8e1"/>
-      <stop offset="30%" stop-color="#ffeb3b"/>
-      <stop offset="70%" stop-color="#ff9800"/>
-      <stop offset="100%" stop-color="#e65100"/>
-    </radialGradient>
-    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#ffeb3b" stop-opacity="0.6"/>
-      <stop offset="100%" stop-color="#ffeb3b" stop-opacity="0"/>
-    </radialGradient>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a0a3e"/>
+      <stop offset="45%" stop-color="#c43e1c"/>
+      <stop offset="65%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#0c4a6e"/>
+    </linearGradient>
+    <linearGradient id="sail" x1="0" y1="0" x2="1" y2="0.7">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f3f3f3"/>
+    </linearGradient>
   </defs>
-  <!-- Outer glow -->
-  <circle cx="32" cy="32" r="30" fill="url(#glow)"/>
-  <!-- Rays -->
-  <g stroke="#ff9800" stroke-width="2.5" stroke-linecap="round" opacity="0.7">
-    <line x1="32" y1="2" x2="32" y2="10"/>
-    <line x1="32" y1="54" x2="32" y2="62"/>
-    <line x1="2" y1="32" x2="10" y2="32"/>
-    <line x1="54" y1="32" x2="62" y2="32"/>
-    <line x1="10.8" y1="10.8" x2="16.4" y2="16.4"/>
-    <line x1="47.6" y1="47.6" x2="53.2" y2="53.2"/>
-    <line x1="53.2" y1="10.8" x2="47.6" y2="16.4"/>
-    <line x1="16.4" y1="47.6" x2="10.8" y2="53.2"/>
-  </g>
-  <!-- Sun body -->
-  <circle cx="32" cy="32" r="16" fill="url(#sg)"/>
-  <!-- Highlight -->
-  <circle cx="28" cy="28" r="6" fill="rgba(255,255,255,0.3)"/>
+  <rect width="64" height="64" rx="12" fill="url(#bg)"/>
+  <circle cx="48" cy="20" r="6" fill="#fff8e1"/>
+  <circle cx="48" cy="20" r="9" fill="#fff8e1" opacity="0.25"/>
+  <line x1="22" y1="13" x2="22" y2="44" stroke="#2a2a2a" stroke-width="2" stroke-linecap="round"/>
+  <path d="M22 13 L22 42 L42 38 Q34 24 22 13 Z" fill="url(#sail)" stroke="#d8d8d8" stroke-width="0.5"/>
+  <path d="M22 24 L36 34 L22 38 Z" fill="#f97316"/>
+  <path d="M8 44 L42 44 Q40 51 14 51 Q8 49 8 44 Z" fill="#deb887" stroke="#8B4513" stroke-width="0.7"/>
+  <path d="M4 56 Q14 53 24 56 Q34 58 44 56 Q54 53 60 55" stroke="#60a5fa" stroke-width="1.8" fill="none" stroke-linecap="round"/>
 </svg>

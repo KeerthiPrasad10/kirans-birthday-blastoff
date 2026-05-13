@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Kiran's Birthday Blast-Off! Turning 4! May 10, 2026";
+export const alt = "Nicola Turns 40 by The Sea! July 18, 2026";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -10,7 +10,7 @@ export default function OGImage() {
     (
       <div
         style={{
-          background: "linear-gradient(180deg, #030510 0%, #0a0e2a 50%, #050714 100%)",
+          background: "linear-gradient(180deg, #1a0a3e 0%, #c43e1c 35%, #f59e0b 55%, #0c4a6e 70%, #041525 100%)",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -22,123 +22,107 @@ export default function OGImage() {
           overflow: "hidden",
         }}
       >
-        {/* Stars */}
-        {[
-          { x: 100, y: 80, s: 4 },
-          { x: 300, y: 150, s: 3 },
-          { x: 500, y: 60, s: 4 },
-          { x: 700, y: 120, s: 2 },
-          { x: 900, y: 80, s: 5 },
-          { x: 1100, y: 150, s: 3 },
-          { x: 200, y: 500, s: 4 },
-          { x: 800, y: 550, s: 3 },
-          { x: 1050, y: 450, s: 4 },
-          { x: 150, y: 350, s: 2 },
-          { x: 400, y: 400, s: 3 },
-          { x: 600, y: 200, s: 2 },
-        ].map((star, i) => (
-          <div
-            key={i}
-            style={{
-              position: "absolute",
-              left: star.x,
-              top: star.y,
-              width: star.s,
-              height: star.s,
-              borderRadius: "50%",
-              background: "white",
-              opacity: 0.7,
-            }}
-          />
-        ))}
-
-        {/* Planet */}
+        {/* Sun */}
         <div
           style={{
             position: "absolute",
-            right: 140,
-            top: 280,
-            width: 120,
-            height: 120,
+            left: 880,
+            top: 130,
+            width: 160,
+            height: 160,
             borderRadius: "50%",
-            background: "linear-gradient(135deg, #d4a44c 0%, #8b5e28 100%)",
-            opacity: 0.6,
+            background: "radial-gradient(circle, #fff8e1 0%, #ffd54f 30%, #ff9800 70%, #e65100 100%)",
+            boxShadow: "0 0 80px 30px rgba(255,200,50,0.45)",
+            display: "flex",
           }}
         />
 
-        {/* Rocket */}
+        {/* Water band */}
         <div
           style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: 240,
+            background: "linear-gradient(180deg, rgba(10,55,110,0.95) 0%, rgba(4,20,45,1) 100%)",
             display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            marginBottom: 30,
           }}
+        />
+
+        {/* Sailboat */}
+        <svg
+          width="220"
+          height="240"
+          viewBox="0 0 220 240"
+          style={{ position: "absolute", left: 130, top: 280 }}
         >
-          <svg
-            width="100"
-            height="120"
-            viewBox="0 0 80 100"
+          <line x1="80" y1="20" x2="80" y2="160" stroke="#222" strokeWidth="5" strokeLinecap="round" />
+          <path d="M80 22 L80 158 L180 138 Q140 72 80 22 Z" fill="white" stroke="#d8d8d8" strokeWidth="1.5" />
+          <path d="M80 60 L150 122 L80 138 Z" fill="#f97316" />
+          <path
+            d="M20 160 L180 160 Q172 200 40 200 Q20 192 20 160 Z"
+            fill="#deb887"
+            stroke="#8B4513"
+            strokeWidth="2"
+          />
+          <path
+            d="M0 222 Q35 215 70 222 Q105 228 140 222 Q175 215 220 220"
+            stroke="#60a5fa"
+            strokeWidth="4"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M40 8C40 8 24 24 24 48L32 44L40 56L48 44L56 48C56 24 40 8 40 8Z"
-              fill="#e8e8e8"
-              stroke="#666"
-              strokeWidth="1"
-            />
-            <path
-              d="M40 8C40 8 30 18 27 36L40 28L53 36C50 18 40 8 40 8Z"
-              fill="#e53935"
-            />
-            <circle cx="40" cy="32" r="5" fill="#4fc3f7" stroke="#0288d1" strokeWidth="1" />
-            <path d="M24 48L16 58L24 52Z" fill="#e53935" />
-            <path d="M56 48L64 58L56 52Z" fill="#e53935" />
-            <path d="M34 56L40 72L46 56Z" fill="#ff9800" />
-            <path d="M37 56L40 66L43 56Z" fill="#ffeb3b" />
-          </svg>
-        </div>
+            strokeLinecap="round"
+            opacity="0.85"
+          />
+        </svg>
 
         {/* Title */}
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            alignItems: "center",
-            gap: 8,
+            alignItems: "flex-end",
+            position: "absolute",
+            right: 80,
+            top: 380,
+            zIndex: 1,
           }}
         >
           <div
             style={{
-              fontSize: 56,
+              fontSize: 64,
               fontWeight: 800,
               color: "white",
-              letterSpacing: "-1px",
-              textAlign: "center",
-              lineHeight: 1.1,
+              letterSpacing: "-1.5px",
+              lineHeight: 1.05,
+              textShadow: "0 2px 20px rgba(0,0,0,0.4)",
+              display: "flex",
             }}
           >
-            Kiran&apos;s Birthday Blast-Off!
+            Nicola Turns 40
           </div>
           <div
             style={{
-              fontSize: 32,
+              fontSize: 56,
               fontWeight: 700,
               color: "#fbbf24",
-              marginTop: 8,
+              marginTop: 4,
+              textShadow: "0 2px 20px rgba(0,0,0,0.4)",
+              display: "flex",
             }}
           >
-            Launching into Year 4!
+            by The Sea
           </div>
           <div
             style={{
               fontSize: 24,
-              color: "#a5b4fc",
-              marginTop: 8,
+              color: "#fef3c7",
+              marginTop: 14,
+              textShadow: "0 1px 10px rgba(0,0,0,0.5)",
+              display: "flex",
             }}
           >
-            May 10, 2026 &middot; 3:00 &ndash; 5:30 PM &middot; Haarlem
+            July 18, 2026 &middot; 3:00 &ndash; 6:00 PM &middot; Beachclub Breez
           </div>
         </div>
       </div>

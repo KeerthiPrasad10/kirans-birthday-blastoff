@@ -4,36 +4,37 @@ import { put, list } from "@vercel/blob";
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const HOST_EMAIL = process.env.HOST_EMAIL || "darcydwyer@gmail.com";
+const HOST_EMAIL = process.env.HOST_EMAIL || "bengisu.corakci@gmail.com";
 
 interface RSVPData {
-  childName: string;
-  parentName: string;
+  guestName: string;
   email: string;
   attending: string;
-  numKids: string;
+  numAdults: string;
+  numChildren: string;
+  childAges: string;
   dietary: string;
   message: string;
   timestamp: string;
 }
 
 function generateICS(): string {
-  // May 10, 2026 — 3:00 PM to 5:30 PM CEST (UTC+2)
+  // July 18, 2026 — 15:00 to 18:00 CEST (UTC+2) = 13:00 to 16:00 UTC
   return [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//KiranBirthday//EN",
+    "PRODID:-//NicolaBirthday//EN",
     "CALSCALE:GREGORIAN",
     "METHOD:PUBLISH",
     "BEGIN:VEVENT",
-    "DTSTART:20260510T130000Z",
-    "DTEND:20260510T153000Z",
-    "SUMMARY:Kiran's Birthday Party",
-    "DESCRIPTION:Kiran's birthday party! See you there.",
-    "LOCATION:Karel van Manderstraat 38\\, 2014 VE Haarlem\\, The Netherlands",
+    "DTSTART:20260718T130000Z",
+    "DTEND:20260718T160000Z",
+    "SUMMARY:Nicola's 40th Birthday - By The Sea",
+    "DESCRIPTION:Nicola's 40th birthday celebration at Beachclub Breez. Sun\\, sea\\, drinks!",
+    "LOCATION:Beachclub Breez\\, Verlengde Strandweg 1\\, 2691 KL 's-Gravenzande\\, The Netherlands",
     "STATUS:CONFIRMED",
     "SEQUENCE:0",
-    "UID:kiran-bday-2026@blastoff",
+    "UID:nicola-40-bday-2026@bythesea",
     "END:VEVENT",
     "END:VCALENDAR",
   ].join("\r\n");
@@ -42,18 +43,19 @@ function generateICS(): string {
 async function sendHostNotification(data: RSVPData): Promise<{ error?: unknown }> {
   const attending = data.attending === "yes";
   const subject = attending
-    ? `RSVP: ${data.childName} is coming!`
-    : `RSVP: ${data.childName} can't make it`;
+    ? `RSVP: ${data.guestName} is coming!`
+    : `RSVP: ${data.guestName} can't make it`;
 
   const body = [
-    attending ? "New crew member signed up!" : "Someone can't make it.",
+    attending ? "New guest confirmed!" : "Someone can't make it.",
     "",
-    `Astronaut(s): ${data.childName}`,
-    `Parent: ${data.parentName}`,
+    `Guest: ${data.guestName}`,
     `Email: ${data.email}`,
     `Attending: ${attending ? "Yes" : "No"}`,
-    attending ? `Number of kids: ${data.numKids}` : "",
-    data.dietary ? `Dietary needs: ${data.dietary}` : "",
+    attending ? `Number of adults: ${data.numAdults}` : "",
+    attending && Number(data.numChildren) > 0 ? `Number of children: ${data.numChildren}` : "",
+    data.childAges ? `Children's ages: ${data.childAges}` : "",
+    data.dietary ? `Dietary requirements: ${data.dietary}` : "",
     data.message ? `Message: ${data.message}` : "",
     "",
     `Submitted: ${new Date(data.timestamp).toLocaleString("en-NL", { timeZone: "Europe/Amsterdam" })}`,
@@ -62,7 +64,7 @@ async function sendHostNotification(data: RSVPData): Promise<{ error?: unknown }
     .join("\n");
 
   const result = await resend.emails.send({
-    from: "Kiran Birthday <keerthi@productmind.pm>",
+    from: "Nicola's 40th <keerthi@productmind.pm>",
     to: HOST_EMAIL,
     subject,
     text: body,
@@ -76,18 +78,18 @@ async function sendGuestCalendarInvite(data: RSVPData): Promise<{ error?: unknow
   const icsContent = generateICS();
 
   const result = await resend.emails.send({
-    from: "Kiran Birthday <keerthi@productmind.pm>",
+    from: "Nicola's 40th <keerthi@productmind.pm>",
     to: data.email,
-    subject: "You're going to Kiran's Birthday Party!",
+    subject: "You're going to Nicola's 40th Birthday by the Sea!",
     text: [
-      `Hi ${data.parentName}!`,
+      `Hi ${data.guestName}!`,
       "",
-      "Thanks for RSVPing to Kiran's Birthday Party!",
+      "Thanks for RSVPing to Nicola's 40th Birthday!",
       "",
-      "Saturday, May 10, 2026",
-      "3:00 - 5:30 PM",
-      "Karel van Manderstraat 38, 2014 VE Haarlem",
-      "+31 6871013646",
+      "Saturday, July 18, 2026",
+      "3:00 - 6:00 PM",
+      "Beachclub Breez",
+      "Verlengde Strandweg 1, 2691 KL 's-Gravenzande",
       "",
       "A calendar invite is attached - add it to your calendar so you don't forget!",
       "",
@@ -95,7 +97,7 @@ async function sendGuestCalendarInvite(data: RSVPData): Promise<{ error?: unknow
     ].join("\n"),
     attachments: [
       {
-        filename: "kirans-birthday.ics",
+        filename: "nicolas-40th.ics",
         content: Buffer.from(icsContent),
       },
     ],
@@ -105,11 +107,12 @@ async function sendGuestCalendarInvite(data: RSVPData): Promise<{ error?: unknow
 
 export async function submitRSVP(formData: FormData) {
   const data: RSVPData = {
-    childName: formData.get("childName") as string,
-    parentName: formData.get("parentName") as string,
+    guestName: formData.get("guestName") as string,
     email: formData.get("email") as string || "",
     attending: formData.get("attending") as string,
-    numKids: formData.get("numKids") as string || "0",
+    numAdults: formData.get("numAdults") as string || "0",
+    numChildren: formData.get("numChildren") as string || "0",
+    childAges: formData.get("childAges") as string || "",
     dietary: formData.get("dietary") as string || "",
     message: formData.get("message") as string || "",
     timestamp: new Date().toISOString(),
@@ -117,18 +120,16 @@ export async function submitRSVP(formData: FormData) {
 
   const emailErrors: string[] = [];
 
-  // Store in Blob (non-blocking — don't fail RSVP if storage is unavailable)
   try {
-    const filename = `rsvps/${Date.now()}-${data.childName.replace(/[^a-zA-Z0-9]/g, "_")}.json`;
+    const filename = `rsvps/${Date.now()}-${data.guestName.replace(/[^a-zA-Z0-9]/g, "_")}.json`;
     await put(filename, JSON.stringify(data, null, 2), {
       access: "public",
       contentType: "application/json",
     });
   } catch {
-    // Storage is optional — RSVP still works via email
+    // Storage is optional
   }
 
-  // Send host notification
   try {
     const result = await sendHostNotification(data);
     if (result?.error) emailErrors.push(`Host: ${JSON.stringify(result.error)}`);
@@ -136,7 +137,6 @@ export async function submitRSVP(formData: FormData) {
     emailErrors.push(`Host: ${String(error)}`);
   }
 
-  // Send guest calendar invite
   try {
     const result = await sendGuestCalendarInvite(data);
     if (result?.error) emailErrors.push(`Guest: ${JSON.stringify(result.error)}`);

@@ -16,25 +16,25 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
-  themeColor: "#050714",
+  themeColor: "#0c1929",
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://kirans-birthday-blastoff.vercel.app"),
-  title: "Kiran's Birthday Blast-Off!",
+  metadataBase: new URL("https://nicolas-40th.vercel.app"),
+  title: "Nicola Turns 40 by The Sea",
   description:
-    "Kiran is turning 4! You're invited to the birthday party. May 10, 2026 at 3:00-5:30 PM in Haarlem.",
+    "Nicola is turning 40! You're invited to celebrate. July 18, 2026 at 3:00-6:00 PM at Beachclub Breez, 's-Gravenzande.",
   openGraph: {
-    title: "Kiran's Birthday Blast-Off!",
+    title: "Nicola Turns 40 by The Sea",
     description:
-      "Kiran is turning 4! You're invited to the birthday party. May 10, 2026 at 3:00-5:30 PM in Haarlem.",
+      "Nicola is turning 40! You're invited to celebrate. July 18, 2026 at 3:00-6:00 PM at Beachclub Breez.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kiran's Birthday Blast-Off!",
+    title: "Nicola Turns 40 by The Sea",
     description:
-      "Kiran is turning 4! You're invited to the birthday party. May 10, 2026 at 3:00-5:30 PM in Haarlem.",
+      "Nicola is turning 40! You're invited to celebrate. July 18, 2026 at 3:00-6:00 PM at Beachclub Breez.",
   },
 };
 
