@@ -20,7 +20,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://nicolas-40th.vercel.app"),
+  metadataBase: new URL("https://nicola-by-the-sea.vercel.app"),
   title: "Nicola Turns 40 by The Sea",
   description:
     "Nicola is turning 40! You're invited to celebrate. July 18, 2026 at 3:00-6:00 PM at Beachclub Breez, 's-Gravenzande.",
