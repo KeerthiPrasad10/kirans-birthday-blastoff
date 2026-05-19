@@ -41,7 +41,9 @@ export default function Home() {
           <p className="text-base sm:text-lg md:text-xl text-amber-100/85 mt-3 sm:mt-4 max-w-md mx-auto leading-relaxed">
             Hello friends, Nicola is turning 40!
             <br />
-            Let&apos;s celebrate together: Sun, sea, drinks... <span className="text-amber-200/90 italic">(it&apos;s a surprise party 🤫)</span>
+            Let&apos;s celebrate together: Sun, sea, drinks...
+            <br />
+            <span className="text-amber-200/90 italic">It&apos;s a surprise party 🤫</span>
             <br />
             <span className="text-amber-200/65 text-sm sm:text-base">Looking forward to create new memories with you!</span>
           </p>
