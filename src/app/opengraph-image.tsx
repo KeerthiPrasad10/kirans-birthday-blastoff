@@ -122,7 +122,7 @@ export default function OGImage() {
               display: "flex",
             }}
           >
-            July 18, 2026 &middot; 3:00 &ndash; 6:00 PM &middot; Beachclub Breez
+            July 18, 2026 &middot; 3:00 &ndash; 6:00 PM &middot; Baia Beachclub
           </div>
         </div>
       </div>

@@ -68,7 +68,7 @@ export default function Home() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
               </svg>
-              <span>Beachclub Breez</span>
+              <span>Baia Beachclub</span>
             </div>
           </div>
 
@@ -107,16 +107,16 @@ export default function Home() {
           <div className="glass-card p-6 sm:p-8 text-center space-y-3 sm:space-y-4">
             <h3 className="text-lg sm:text-xl font-bold text-white">Party Location</h3>
             <div className="space-y-1.5 sm:space-y-2 text-amber-100/90 text-sm sm:text-base">
-              <p className="font-medium text-white">Beachclub Breez</p>
-              <p>Verlengde Strandweg 1</p>
-              <p>2691 KL &apos;s-Gravenzande</p>
+              <p className="font-medium text-white">Baia Beachclub</p>
+              <p>Strand Noord 59</p>
+              <p>2586 ZZ Scheveningen</p>
               <p className="text-xs sm:text-sm text-amber-100/70">The Netherlands</p>
             </div>
             <div className="text-amber-100/80 text-xs sm:text-sm pt-1 sm:pt-2">
               Saturday, July 18 &middot; 3:00 &ndash; 6:00 PM
             </div>
             <a
-              href="https://www.google.com/maps/search/?api=1&query=Beachclub+Breez+Verlengde+Strandweg+1+2691KL+s-Gravenzande"
+              href="https://www.google.com/maps/search/?api=1&query=Baia+Beachclub+Strand+Noord+59+2586ZZ+Scheveningen"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 mt-3 sm:mt-4 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl
